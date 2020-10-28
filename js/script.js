@@ -6,12 +6,32 @@
 // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
+var mine = [];
+var controllo = 1;
+
 // CREAZIONE ARRAY MINE (numeri randomici)
+  var random = Math.floor(Math.random() * 100) + 1;
+  mine.push(random);
+
   // faccio un ciclo for da 1 a 16
+  for (var i = 0; i < 15; i++) {
+    // il ciclo while si ripete finche' non viene generato un numero random non presente nell'array
+    while (controllo) {
+      // genero dei numeri tra 1 e 100
+      random = Math.floor(Math.random() * 100) + 1;
+      var boolean = mine.includes(random);
+      if (boolean === false) {
+        controllo = 0;
+      }
+    }
 
-  // genero dei numeri tra 1 e 100
+    // salvo random nell'array
+    mine.push(random);
+    controllo = 1;
+  }
+  console.log(mine);
 
-  // ogni volta che si ripete non salvare il numero nell'array
+
 
 // INPUT
   // faccio un ciclo che mi generi un prompt (max 100 - 16 volte)
