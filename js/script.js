@@ -41,14 +41,14 @@ var numeriUte = [];
       perde = !ricerca(input, mine);
     }
 
-    if (perde) {
+    if (perde && (input >= 1 && input <=100)) {
       // se perde, vince non viene incrementato
       vince++;
 
       // faccio un array che tiene traccia dei numeri inseriti dall'utente
       numeriUte.push(input);
-      controllo = true;
     }
+    controllo = true;
   }
   console.log(numeriUte);
 
