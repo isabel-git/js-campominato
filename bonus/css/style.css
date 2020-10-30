@@ -1,0 +1,28 @@
+/* regole generali */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+#flex{
+  width: 50%;
+  min-height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.celle{
+  flex-basis: 10%;
+  min-height: 30px;
+  border: 1px solid black;
+}

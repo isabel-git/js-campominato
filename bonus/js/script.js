@@ -10,7 +10,9 @@ var controllo = true;
 var mine = [];
 var vince, perde;
 var numeriUte = [];
-var n;
+var n, input;
+var mineOrd = [];
+var stampa = document.getElementById("flex");
 
 // chiedo all'utente di inserire la difficolta'
 // con il ciclo while faccio un controllo del numero inserito
@@ -44,7 +46,7 @@ while (controllo) {
     while (controllo) {
       // genero dei numeri tra 1 e 100
       random = Math.floor(Math.random() * n) + 1;
-      // richiamo la mia funzione per cercare i numeri doppi
+      // richiamo la mia funzione per non generare numeri doppi
       controllo = ricerca(random, mine);
     }
 
@@ -56,13 +58,13 @@ while (controllo) {
 
 
   // faccio un ciclo che mi generi un prompt (max 100 - 16 volte)
-  vince = 1;
+  vince = 0;
   perde = true;
   controllo = true;
   while ((vince <= 84) && perde) {
-    // l'utente inserisce un numero e controllo che non sia gia' stato inserito
+    // l'utente inserisce un numero per controllare che non sia gia' stato inserito
     while (controllo) {
-      var input = parseInt(prompt("inserisci un numero da 1 a " + n));
+      input = parseInt(prompt("inserisci un numero da 1 a " + n));
       controllo = ricerca(input, numeriUte);
       // controllo se il numero inserito dall'utente e' presente nell'array mine
       perde = !ricerca(input, mine);
@@ -72,9 +74,10 @@ while (controllo) {
       // se perde, vince non viene incrementato
       vince++;
 
-      // faccio un array che tiene traccia dei numeri inseriti dall'utente
-      numeriUte.push(input);
     }
+    // faccio un array che tiene traccia dei numeri inseriti dall'utente
+    numeriUte.push(input);
+
     controllo = true;
   }
   console.log(numeriUte);
@@ -88,7 +91,23 @@ while (controllo) {
     console.log("hai vintoooo!");
   }
   // stampo il punteggio ottenuto dall'utente
-  console.log("il tuo punteggio e' ", numeriUte.length, "/" ,n," punti");
+  console.log("il tuo punteggio e' ", vince, "/" ,n," punti");
+
+
+// *********** INSERIMENTO STILE *************
+
+// ordino gli elementi dell'array mine
+mineOrd = mine.sort(function(a, b){return a-b});
+
+console.log(mineOrd);
+
+// utilizzo un ciclo for per generare i div celle
+for (var i = 0; i < n; i++) {
+  // if (i + 1 === mineOrd[i]) {
+    stampa.innerHTML += "<div class='celle'>" + "</div>";
+    console.log(stampa.innerHTML);
+  // }
+}
 
 
 // FUNZIONI
