@@ -13,6 +13,7 @@ var numeriUte = [];
 var n, input;
 var mineOrd = [];
 var stampa = document.getElementById("flex");
+var contenuto = "", j;
 
 // chiedo all'utente di inserire la difficolta'
 // con il ciclo while faccio un controllo del numero inserito
@@ -94,7 +95,7 @@ while (controllo) {
   console.log("il tuo punteggio e' ", vince, "/" ,n," punti");
 
 
-// *********** INSERIMENTO STILE *************
+// *********** PARTE GRAFICA *************
 
 // ordino gli elementi dell'array mine
 mineOrd = mine.sort(function(a, b){return a-b});
@@ -102,11 +103,15 @@ mineOrd = mine.sort(function(a, b){return a-b});
 console.log(mineOrd);
 
 // utilizzo un ciclo for per generare i div celle
-for (var i = 0; i < n; i++) {
-  // if (i + 1 === mineOrd[i]) {
+j = 0;
+for (var i = 1; i <= n; i++) {
+    if (i === mineOrd[j]) {
+      stampa.innerHTML += "<div class='celle'>" + mineOrd[j] + "</div>";
+      j++;
+    } else {
     stampa.innerHTML += "<div class='celle'>" + "</div>";
-    console.log(stampa.innerHTML);
-  // }
+  }
+
 }
 
 
