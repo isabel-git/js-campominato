@@ -58,30 +58,30 @@ while (controllo) {
   console.log(mine);
 
 
-  // faccio un ciclo che mi generi un prompt (max 100 - 16 volte)
-  vince = 0;
-  perde = true;
-  controllo = true;
-  while ((vince <= 84) && perde) {
-    // l'utente inserisce un numero per controllare che non sia gia' stato inserito
-    while (controllo) {
-      input = parseInt(prompt("inserisci un numero da 1 a " + n));
-      controllo = ricerca(input, numeriUte);
-      // controllo se il numero inserito dall'utente e' presente nell'array mine
-      perde = !ricerca(input, mine);
-    }
+  // // faccio un ciclo che mi generi un prompt (max 100 - 16 volte)
+  // vince = 0;
+  // perde = true;
+  // controllo = true;
+  // while ((vince <= 84) && perde) {
+  //   // l'utente inserisce un numero per controllare che non sia gia' stato inserito
+  //   while (controllo) {
+  //     input = parseInt(prompt("inserisci un numero da 1 a " + n));
+  //     controllo = ricerca(input, numeriUte);
+  //     // controllo se il numero inserito dall'utente e' presente nell'array mine
+  //     perde = !ricerca(input, mine);
+  //   }
 
-    if (perde && (input >= 1 && input <= n)) {
-      // se perde, vince non viene incrementato
-      vince++;
+  //   if (perde && (input >= 1 && input <= n)) {
+  //     // se perde, vince non viene incrementato
+  //     vince++;
 
-    }
-    // faccio un array che tiene traccia dei numeri inseriti dall'utente
-    numeriUte.push(input);
+  //   }
+  //   // faccio un array che tiene traccia dei numeri inseriti dall'utente
+  //   numeriUte.push(input);
 
-    controllo = true;
-  }
-  console.log(numeriUte);
+  //   controllo = true;
+  // }
+  // console.log(numeriUte);
 
 // OUTPUT
   // se il numero in input e' presente in mine la partita termina e stampo "hai perso"
@@ -105,11 +105,12 @@ console.log(mineOrd);
 // utilizzo un ciclo for per generare i div celle
 j = 0;
 for (var i = 1; i <= n; i++) {
-    if (i === mineOrd[j]) {
-      stampa.innerHTML += "<div class='celle'>" + mineOrd[j] + "</div>";
-      j++;
-    } else {
-    stampa.innerHTML += "<div class='celle'>" + "</div>";
+
+  if (i === mineOrd[j]) {
+    stampa.innerHTML += "<div href='#' class='celle mine'>" + "<p>" + mineOrd[j] + "</p>" + "</div>";
+    j++;
+  } else {
+  stampa.innerHTML += "<div href='#' class='celle'>" + "</div>";
   }
 
 }
@@ -119,3 +120,24 @@ for (var i = 1; i <= n; i++) {
 function ricerca(numero, array){
   return array.includes(numero);
 }
+
+var aperto = false;
+var elemento = $("div p");
+elemento.hide();
+
+// $( "p" ).click(function() {
+//   if(aperto === false){
+//     $( "p" ).addClass( "active" ); // aggiunge la classe active al menu ham
+//     aperto = true;
+//     console.log(aperto);
+//   }
+// });
+
+$('div.mine').click(function() {
+  if(aperto === false){
+    $('p').show().addClass( "active" ); // mostra il menu hamburger al click del ham
+    // $('.hamburger-menu').addClass( "active" ); // aggiunge la classe active al menu ham
+    aperto = true;
+    console.log(aperto);
+  } 
+});

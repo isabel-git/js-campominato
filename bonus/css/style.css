@@ -9,20 +9,29 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 #flex{
   width: 50%;
-  min-height: 400px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .celle{
   flex-basis: 10%;
-  min-height: 30px;
+  min-height: 70px;
   border: 1px solid black;
+  background-color: lightgreen;
+}
+
+p{
+  width: 100%;
+  height: 100%;
+}
+
+p.active{
+  background-color: crimson;
 }
