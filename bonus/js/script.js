@@ -85,14 +85,19 @@ while (controllo) {
 
 // OUTPUT
   // se il numero in input e' presente in mine la partita termina e stampo "hai perso"
-  if (perde === false) {
-    console.log("hai perso");
+  // if (perde === false) {
+  //   console.log("hai perso");
   // altrimenti stampo "vittoria"
-  } else {
-    console.log("hai vintoooo!");
-  }
+  // } else {
+  //   console.log("hai vintoooo!");
+  // }
   // stampo il punteggio ottenuto dall'utente
-  console.log("il tuo punteggio e' ", vince, "/" ,n," punti");
+  // console.log("il tuo punteggio e' ", vince, "/" ,n," punti");
+
+  // FUNZIONI
+function ricerca(numero, array){
+  return array.includes(numero);
+}
 
 
 // *********** PARTE GRAFICA *************
@@ -107,37 +112,43 @@ j = 0;
 for (var i = 1; i <= n; i++) {
 
   if (i === mineOrd[j]) {
-    stampa.innerHTML += "<div href='#' class='celle mine'>" + "<p>" + mineOrd[j] + "</p>" + "</div>";
+    stampa.innerHTML += "<div class='celle mine'>" + "<p>" + mineOrd[j] + "</p>" + "</div>";
     j++;
   } else {
-  stampa.innerHTML += "<div href='#' class='celle'>" + "</div>";
+  stampa.innerHTML += "<div class='celle'>" + "</div>";
   }
 
 }
 
+// metto a ciascun div un numero univoco
+$(function(){
+  i = 1;
+  $('#flex').find('div').each(function(){
+    $(this).attr('id', i);
+     i++;
+  });
+});
 
-// FUNZIONI
-function ricerca(numero, array){
-  return array.includes(numero);
-}
 
-var aperto = false;
 var elemento = $("div p");
 elemento.hide();
 
-// $( "p" ).click(function() {
-//   if(aperto === false){
-//     $( "p" ).addClass( "active" ); // aggiunge la classe active al menu ham
-//     aperto = true;
-//     console.log(aperto);
-//   }
-// });
 
-$('div.mine').click(function() {
-  if(aperto === false){
-    $('p').show().addClass( "active" ); // mostra il menu hamburger al click del ham
-    // $('.hamburger-menu').addClass( "active" ); // aggiunge la classe active al menu ham
-    aperto = true;
-    console.log(aperto);
+// mostra se nella casella c'e una mina o no al click
+$( 'div.celle' ).click(function() {
+  var somma=0;
+  var id = $(this).attr('id');
+  console.log(id);
+  var classe = $(this).attr('class');
+  console.log(classe);
+  // se c'e una mina si aprono tutte le caselle che contengono una mina
+  if(classe === "celle mine"){
+    $( 'p' ).show().addClass( 'mine' ); 
+    alert("SEI ESPLOSO!!!");
+    controllo=false;
+    // altrimenti si apre una casella vuota
+  } else {
+    $( '#' + id).show().addClass( 'salvo' );
   } 
 });
+

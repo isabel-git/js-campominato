@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+h1{
+  text-align: center;
+  margin: 10px 0;
+}
+
 .container{
   width: 100%;
   display: flex;
@@ -32,6 +37,10 @@ p{
   height: 100%;
 }
 
-p.active{
+p.mine{
   background-color: crimson;
+}
+
+.salvo{
+  background-color: rgb(197, 196, 196);
 }
